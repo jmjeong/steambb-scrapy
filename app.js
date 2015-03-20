@@ -86,14 +86,14 @@ var job = new CronJob({
                     objectParams: {
                         ACL: 'public-read'
                     },
-                    debug:      true
+                    debug:      false
                 });
 
                 upload.send(function (err) {
                     if (err) {
                         console.error('Upload error' + err);
                     }
-                    console.log('Done');
+                    console.log('Uploading Done');
                 });
             }
         )
