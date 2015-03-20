@@ -29,7 +29,7 @@ var job = new CronJob({
     cronTime: config.cronTime,
     onTick: function() {
         async.waterfall([
-            function(callback) {
+            function fetch_list(callback) {
                 var model = {
                     subjects: 'div.board_list[id!="notice_wrapper"] > ul > li > div.subject',
                     links: {
@@ -42,13 +42,13 @@ var job = new CronJob({
                     callback(err, data)
                 })
             },
-            function(data, callback) {
+            function process_detail(data, callback) {
                 async.parallel(_.map(data.links, function (link) {
                     return function(cb) {
                         fetch_detail(link, function(data) {
                             cb(null, data);
                         })};
-                }), function (err, result) {
+                }), function make_rss(err, result) {
                     var RSS = require('rss');
 
                     var feed = new RSS({
@@ -66,7 +66,7 @@ var job = new CronJob({
                     var xml = feed.xml();
                     callback(null, xml)
                 })
-            }], function(error, data) {
+            }], function sendto_s3(error, data) {
                 if (error) {
                     console.err(error)
                 }
@@ -93,7 +93,7 @@ var job = new CronJob({
                     if (err) {
                         console.error('Upload error' + err);
                     }
-                    console.log('Uploading Done');
+                    // console.log('Uploading Done');
                 });
             }
         )
