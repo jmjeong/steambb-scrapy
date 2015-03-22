@@ -25,3 +25,7 @@ RSS을 생성 후에 [amazon s3](https://s3.amazonaws.com/jmjeong/steambb.rss)�
 npm install
 pm2 start app.js
 ```
+
+### 참고
+
+node-scrapy : CSS selector는 chrome의 개발자 도구에서 `Copy CSS Path`를 이용하면 쉽게 얻을 수 있다.
