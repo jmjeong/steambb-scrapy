@@ -7,14 +7,21 @@ RSS을 생성 후에 [amazon s3](https://s3.amazonaws.com/jmjeong/steambb.rss)�
 
 ```json
 {
-	"cronTime" : "0 10,40 * * * *",             // 게시물 긁어오는 시간. 매 시 10분, 40분에 읽어옴
-	"AWS_S3_ACCESS_KEY" : "AWS_S3_ACCESS_KEY",  // S3 access key
-	"AWS_S3_SECRET_KEY" : "AWS_S3_SECRET_KEY",  // S3 secret key
-	"AWS_S3_BUCKET" : "AWS_S3_BUCKET"           // bucket 이름
+	"cronTime" : "0 10,40 * * * *",             
+	"AWS_S3_ACCESS_KEY" : "AWS_S3_ACCESS_KEY",  
+	"AWS_S3_SECRET_KEY" : "AWS_S3_SECRET_KEY",  
+	"AWS_S3_BUCKET" : "AWS_S3_BUCKET"           
 }
 ```
 
+- cronTime : 게시물 긁어오는 시간. 매 시 10분, 40분에 읽어옴
+- AWS_S3_ACCESS_KEY : S3 access key
+- AWS_S3_SECRET_KEY : S3 secret key
+- AWS_S3_BUCKET : bucket 이름
+
 ### 실행
 
-> npm install
-> pm2 start app.js
+```sh
+npm install
+pm2 start app.js
+```
